@@ -10,8 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Clone the GitHub repository that contains the deploy.yaml file
-                git 'https://github.com/your-repo/deployments.git'  // Replace with your actual GitHub repository URL
+                
             }
         }
 
