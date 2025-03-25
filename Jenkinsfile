@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SSH_CREDENTIALS_ID = 'K8s-ssh'  
-        GITHUB_REPO_URL = git 'https://github.com/darshimackey/kube.git'' 
+        GITHUB_REPO_URL = git 'https://github.com/darshimackey/kube.git'
         K8S_MASTER_PRIVATE_IP = '172.31.36.113'
         DEPLOY_YAML_PATH = 'deploy.yaml'
     }
