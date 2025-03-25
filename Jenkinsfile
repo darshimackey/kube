@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        ssh -o StrictHostKeyChecking=no $SSH_USER@$172.31.36.113 '
+                        ssh -o StrictHostKeyChecking=no $SSH_USER@${172.31.36.113} '
                             echo "Starting deployment on Kubernetes master"
                             kubectl apply -f $DEPLOY_YAML_PATH
                             kubectl get pods  
