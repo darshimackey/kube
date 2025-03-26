@@ -18,10 +18,11 @@ pipeline {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: "${SSH_CREDENTIALS_ID}", keyFileVariable: 'SSH_KEY')]) {
-                        sh """
-                            chmod 600 ${SSH_KEY}
-                            ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} user@${K8S_MASTER_PRIVATE_IP} 'kubectl apply -f ${DEPLOY_YAML_PATH}'
-                        """
+                        // Avoid Groovy string interpolation, use shell parameter substitution
+                        sh '''#!/bin/bash
+                            chmod 600 $SSH_KEY
+                            ssh -o StrictHostKeyChecking=no -i $SSH_KEY user@$K8S_MASTER_PRIVATE_IP "kubectl apply -f $DEPLOY_YAML_PATH"
+                        '''
                     }
                 }
             }
